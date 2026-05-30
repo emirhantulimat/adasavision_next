@@ -1,7 +1,7 @@
 // src/lib/api.ts
 import type { WPPage, PageContent, Service, PipelineStep, ContactItem, Industry } from "@/types";
 
-const WP_API = process.env.NEXT_PUBLIC_WP_API_URL ?? "https://adasavision.com/wp-json/wp/v2";
+const WP_API = process.env.NEXT_PUBLIC_WP_API_URL ?? "/wp-json/wp/v2";
 
 /** Fetch a single page by slug from WP REST API */
 export async function fetchPageBySlug(slug: string): Promise<WPPage | null> {
@@ -58,22 +58,22 @@ const AR_CONTENT: PageContent = {
 
   services: [
     {
-      image: "https://adasavision.com/wp-content/uploads/2026/03/Gemini_Generated_Image_xxbxsvxxbxsvxxbx.png",
+      image: "/wp-content/uploads/2026/03/Gemini_Generated_Image_xxbxsvxxbxsvxxbx.png",
       title: "التحقق من الوجود / والعدم",
       description: "نضمن وجود جميع المكونات في أماكنها الصحيحة دون أي نقص.",
     },
     {
-      image: "https://adasavision.com/wp-content/uploads/2026/03/Gemini_Generated_Image_m0p2utm0p2utm0p2.png",
+      image: "/wp-content/uploads/2026/03/Gemini_Generated_Image_m0p2utm0p2utm0p2.png",
       title: "كشف العيوب",
       description: "اكتشاف عيوب المنتجات بدقة عالية باستخدام أنظمة رؤية مدعومة بالذكاء الاصطناعي.",
     },
     {
-      image: "https://adasavision.com/wp-content/uploads/2026/03/Gemini_Generated_Image_305eo5305eo5305e.png",
+      image: "/wp-content/uploads/2026/03/Gemini_Generated_Image_305eo5305eo5305e.png",
       title: "كشف الشذوذ",
       description: "اكتشاف الأنماط غير الطبيعية والعيوب غير المعروفة التي قد تفوت الأنظمة التقليدية.",
     },
     {
-      image: "https://adasavision.com/wp-content/uploads/2026/03/Gemini_Generated_Image_jhxsxjjhxsxjjhxs.png",
+      image: "/wp-content/uploads/2026/03/Gemini_Generated_Image_jhxsxjjhxsxjjhxs.png",
       title: "القياس",
       description: "تحقيق قياسات دقيقة ومتسقة دون الحاجة إلى تدخل يدوي.",
     },
@@ -157,22 +157,22 @@ const EN_CONTENT: PageContent = {
 
   services: [
     {
-      image: "https://adasavision.com/wp-content/uploads/2026/03/Gemini_Generated_Image_xxbxsvxxbxsvxxbx.png",
+      image: "/wp-content/uploads/2026/03/Gemini_Generated_Image_xxbxsvxxbxsvxxbx.png",
       title: "Presence / Absence Control",
       description: "Ensure that every component is correctly placed and nothing is missing.",
     },
     {
-      image: "https://adasavision.com/wp-content/uploads/2026/03/Gemini_Generated_Image_m0p2utm0p2utm0p2.png",
+      image: "/wp-content/uploads/2026/03/Gemini_Generated_Image_m0p2utm0p2utm0p2.png",
       title: "Defect Detection",
       description: "Identify product defects with high precision using AI-powered vision systems.",
     },
     {
-      image: "https://adasavision.com/wp-content/uploads/2026/03/Gemini_Generated_Image_305eo5305eo5305e.png",
+      image: "/wp-content/uploads/2026/03/Gemini_Generated_Image_305eo5305eo5305e.png",
       title: "Anomaly Detection",
       description: "Detect unusual patterns and unknown defects that traditional systems might miss.",
     },
     {
-      image: "https://adasavision.com/wp-content/uploads/2026/03/Gemini_Generated_Image_jhxsxjjhxsxjjhxs.png",
+      image: "/wp-content/uploads/2026/03/Gemini_Generated_Image_jhxsxjjhxsxjjhxs.png",
       title: "Measurement",
       description: "Achieve accurate and consistent measurements without manual intervention.",
     },

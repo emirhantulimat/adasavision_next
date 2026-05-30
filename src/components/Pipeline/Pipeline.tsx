@@ -14,7 +14,7 @@ export default function Pipeline({ content, locale }: PipelineProps) {
   return (
     <section
       id="how-it-works"
-      className="relative py-20 lg:py-32 bg-dark-800 overflow-hidden"
+      className="relative py-20 lg:py-32 bg-[#FFFFFF] overflow-hidden"
     >
       {/* Decorative top/bottom borders */}
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-500/25 to-transparent" />
@@ -32,13 +32,13 @@ export default function Pipeline({ content, locale }: PipelineProps) {
           </div>
 
           <h2
-            className={`font-bold text-white mb-4 ${
+            className={`font-bold text-[#152D49] mb-4 ${
               isAr ? "text-3xl sm:text-4xl" : "text-3xl sm:text-4xl font-en"
             }`}
           >
             {content.pipelineTitle}
           </h2>
-          <p className={`text-slate-400 max-w-2xl ${isAr ? "ms-auto text-base" : "mx-auto text-lg"}`}>
+          <p className={`text-[#152D49]/80 max-w-2xl ${isAr ? "me-auto text-right text-base" : "mx-auto text-lg"}`}>
             {content.pipelineSubtitle}
           </p>
         </div>
@@ -59,24 +59,24 @@ export default function Pipeline({ content, locale }: PipelineProps) {
                 <div
                   className="relative z-10 w-24 h-24 rounded-2xl
                               flex flex-col items-center justify-center gap-1
-                              bg-dark-700 border-2 border-brand-500/30
+                              bg-[#F2F2F2] border-2 border-[#67BBBD]/60
                               mb-6 shrink-0
-                              shadow-[0_0_30px_rgba(0,174,219,0.15)]"
+                              shadow-sm"
                 >
                   <span className="text-2xl">{stepIcons[idx]}</span>
                   <span className="text-xs font-bold text-brand-400">{step.number}</span>
                 </div>
 
                 {/* Content card */}
-                <div className="glass rounded-2xl p-6 border border-slate-700/40 card-hover w-full">
+                <div className="glass rounded-2xl p-6 border border-[#d9e2e8] card-hover w-full">
                   <h3
-                    className={`font-bold text-white mb-3 ${
+                    className={`font-bold text-[#152D49] mb-3 ${
                       isAr ? "text-lg" : "text-lg font-en"
                     }`}
                   >
                     {step.title}
                   </h3>
-                  <p className="text-sm text-slate-400 leading-relaxed">
+                  <p className="text-sm text-[#152D49]/75 leading-relaxed">
                     {step.description}
                   </p>
 
@@ -92,10 +92,9 @@ export default function Pipeline({ content, locale }: PipelineProps) {
         </div>
 
         {/* Accuracy callout */}
-        <div className="mt-16 glass rounded-2xl p-8 border border-brand-500/20 text-center
-                        bg-gradient-to-r from-brand-950/20 via-dark-800 to-brand-950/20">
+        <div className="mt-16 glass rounded-2xl p-8 border border-[#d9e2e8] text-center bg-[#F2F2F2]">
           <div className="text-6xl font-bold gradient-text mb-2">99.9%</div>
-          <p className="text-slate-300 font-medium">
+          <p className="text-[#152D49] font-medium">
             {isAr ? "دقة الكشف عن العيوب — مضمونة" : "Defect Detection Accuracy — Guaranteed"}
           </p>
         </div>

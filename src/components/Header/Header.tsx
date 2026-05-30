@@ -43,8 +43,8 @@ export default function Header({ locale }: HeaderProps) {
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-dark-900/95 backdrop-blur-xl border-b border-brand-500/10 shadow-lg shadow-brand-950/30"
-          : "bg-transparent"
+          ? "bg-white/95 backdrop-blur-xl border-b border-[#d9e2e8]"
+          : "bg-[#F2F2F2]/80"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -57,7 +57,7 @@ export default function Header({ locale }: HeaderProps) {
           >
             <div className="relative w-[140px] h-[40px]">
               <Image
-                src="https://adasavision.com/wp-content/uploads/2026/05/logotemp.png"
+                src="/wp-content/uploads/2026/05/logotemp.png"
                 alt="Adasa Vision"
                 fill
                 className="object-contain object-start"
@@ -73,7 +73,7 @@ export default function Header({ locale }: HeaderProps) {
               <a
                 key={link.label}
                 href={link.href}
-                className="text-sm font-medium text-slate-300 hover:text-brand-400 transition-colors duration-200"
+                className="text-sm font-medium text-[#152D49] hover:text-[#67BBBD] transition-colors duration-200"
               >
                 {link.label}
               </a>
@@ -86,8 +86,8 @@ export default function Header({ locale }: HeaderProps) {
             <Link
               href={otherHref}
               className="hidden sm:inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold
-                         rounded-full border border-brand-500/40 text-brand-400
-                         hover:bg-brand-500/10 hover:border-brand-400
+                         rounded-full border border-[#67BBBD] text-[#152D49]
+                         hover:bg-[#67BBBD]/15
                          transition-all duration-200"
             >
               {otherLabel}
@@ -97,8 +97,8 @@ export default function Header({ locale }: HeaderProps) {
             <button
               aria-label={menuOpen ? "Close menu" : "Open menu"}
               onClick={() => setMenuOpen(!menuOpen)}
-              className="lg:hidden p-2 rounded-md text-slate-300 hover:text-white
-                         hover:bg-white/5 transition"
+              className="lg:hidden p-2 rounded-md text-[#152D49] hover:text-[#152D49]
+                         hover:bg-[#67BBBD]/15 transition"
             >
               <span className="sr-only">Toggle menu</span>
               <div className="w-5 flex flex-col gap-1">
@@ -129,15 +129,15 @@ export default function Header({ locale }: HeaderProps) {
           menuOpen ? "max-h-96" : "max-h-0"
         }`}
       >
-        <div className="bg-dark-800/98 backdrop-blur-xl border-t border-brand-500/10 px-4 py-4">
+        <div className="bg-white/98 backdrop-blur-xl border-t border-[#d9e2e8] px-4 py-4">
           <nav className="flex flex-col gap-1 mb-4">
             {navLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
-                className="px-3 py-2.5 text-sm font-medium text-slate-300
-                           hover:text-brand-400 hover:bg-brand-500/5
+                className="px-3 py-2.5 text-sm font-medium text-[#152D49]
+                           hover:text-[#152D49] hover:bg-[#67BBBD]/15
                            rounded-md transition-colors"
               >
                 {link.label}
@@ -149,8 +149,8 @@ export default function Header({ locale }: HeaderProps) {
             href={otherHref}
             className="flex items-center justify-center gap-2 w-full px-4 py-2.5
                        text-sm font-semibold rounded-full
-                       border border-brand-500/40 text-brand-400
-                       hover:bg-brand-500/10 transition"
+                       border border-[#67BBBD] text-[#152D49]
+                       hover:bg-[#67BBBD]/15 transition"
           >
             {otherLabel}
           </Link>

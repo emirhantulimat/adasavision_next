@@ -12,7 +12,7 @@ export default function Footer({ content, locale }: FooterProps) {
   const isAr = locale === "ar";
 
   return (
-    <footer className="relative bg-dark-800 border-t border-slate-700/40 overflow-hidden">
+    <footer className="relative bg-white border-t border-[#d9e2e8] overflow-hidden">
       {/* Top glow line */}
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-500/40 to-transparent" />
 
@@ -24,14 +24,14 @@ export default function Footer({ content, locale }: FooterProps) {
             <Link href={isAr ? "/" : "/en"} className="inline-block mb-4">
               <div className="relative w-[130px] h-[36px]">
                 <Image
-                  src="https://adasavision.com/wp-content/uploads/2026/05/logotemp.png"
+                  src="/wp-content/uploads/2026/05/logotemp.png"
                   alt="Adasa Vision"
                   fill
                   className="object-contain object-start"
                 />
               </div>
             </Link>
-            <p className="text-sm text-slate-500 leading-relaxed max-w-xs">
+            <p className="text-sm text-[#152D49]/75 leading-relaxed max-w-xs">
               {isAr
                 ? "أنظمة رؤية صناعية ذكية لمراقبة جودة منتجاتك في الوقت الفعلي."
                 : "Smart industrial vision systems for real-time product quality monitoring."}
@@ -44,8 +44,8 @@ export default function Footer({ content, locale }: FooterProps) {
                   key={s}
                   href={s === "email" ? "mailto:info@adasavision.com" : "#"}
                   aria-label={s}
-                  className="w-8 h-8 rounded-lg border border-slate-700 flex items-center justify-center
-                             text-slate-500 hover:text-brand-400 hover:border-brand-500/40 transition-colors"
+                  className="w-8 h-8 rounded-lg border border-[#d9e2e8] flex items-center justify-center
+                             text-[#152D49]/70 hover:text-[#152D49] hover:border-[#67BBBD] transition-colors"
                 >
                   {s === "linkedin" && (
                     <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
@@ -69,7 +69,7 @@ export default function Footer({ content, locale }: FooterProps) {
 
           {/* Quick links */}
           <div className={`${isAr ? "order-2" : "order-2"}`}>
-            <h4 className="text-sm font-semibold text-white mb-4 uppercase tracking-widest">
+            <h4 className="text-sm font-semibold text-[#152D49] mb-4 uppercase tracking-widest">
               {isAr ? "روابط سريعة" : "Quick Links"}
             </h4>
             <ul className="space-y-2">
@@ -92,7 +92,7 @@ export default function Footer({ content, locale }: FooterProps) {
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="text-sm text-slate-500 hover:text-brand-400 transition-colors"
+                    className="text-sm text-[#152D49]/75 hover:text-[#152D49] transition-colors"
                   >
                     {link.label}
                   </a>
@@ -103,7 +103,7 @@ export default function Footer({ content, locale }: FooterProps) {
 
           {/* Language switcher */}
           <div className={`${isAr ? "order-1 md:order-3" : "order-3"}`}>
-            <h4 className="text-sm font-semibold text-white mb-4 uppercase tracking-widest">
+            <h4 className="text-sm font-semibold text-[#152D49] mb-4 uppercase tracking-widest">
               {isAr ? "اللغة" : "Language"}
             </h4>
             <div className="flex flex-col gap-2">
@@ -112,7 +112,7 @@ export default function Footer({ content, locale }: FooterProps) {
                 className={`inline-flex items-center gap-2 text-sm px-3 py-2 rounded-lg transition-all
                             ${isAr
                               ? "bg-brand-500/10 text-brand-400 border border-brand-500/30"
-                              : "text-slate-500 hover:text-slate-300 hover:bg-white/5"
+                              : "text-[#152D49]/75 hover:text-[#152D49] hover:bg-[#67BBBD]/10"
                             }`}
               >
                 🇸🇦 العربية
@@ -122,7 +122,7 @@ export default function Footer({ content, locale }: FooterProps) {
                 className={`inline-flex items-center gap-2 text-sm px-3 py-2 rounded-lg transition-all
                             ${!isAr
                               ? "bg-brand-500/10 text-brand-400 border border-brand-500/30"
-                              : "text-slate-500 hover:text-slate-300 hover:bg-white/5"
+                              : "text-[#152D49]/75 hover:text-[#152D49] hover:bg-[#67BBBD]/10"
                             }`}
               >
                 🇺🇸 English
@@ -132,10 +132,10 @@ export default function Footer({ content, locale }: FooterProps) {
         </div>
 
         {/* Bottom bar */}
-        <div className={`border-t border-slate-700/40 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3
+        <div className={`border-t border-[#d9e2e8] pt-6 flex flex-col sm:flex-row items-center justify-between gap-3
                          ${isAr ? "sm:flex-row-reverse text-right" : "text-left"}`}>
-          <p className="text-xs text-slate-600">{content.footerCopy}</p>
-          <p className="text-xs text-slate-700">
+          <p className="text-xs text-[#152D49]/70">{content.footerCopy}</p>
+          <p className="text-xs text-[#152D49]/60">
             {isAr ? "مبني بـ Next.js + TailwindCSS" : "Built with Next.js + TailwindCSS"}
           </p>
         </div>

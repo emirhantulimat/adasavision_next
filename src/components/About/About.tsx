@@ -1,4 +1,4 @@
-// src/components/About/About.tsx
+import Image from "next/image";
 import type { PageContent, Locale } from "@/types";
 
 interface AboutProps {
@@ -6,108 +6,39 @@ interface AboutProps {
   locale: Locale;
 }
 
-const features = {
-  ar: [
-    { icon: "🤖", title: "مدعوم بالذكاء الاصطناعي", desc: "خوارزميات متقدمة تضمن دقة لا مثيل لها" },
-    { icon: "⚡", title: "في الوقت الفعلي", desc: "كشف فوري ومعالجة في أجزاء من الثانية" },
-    { icon: "🔗", title: "تكامل سهل", desc: "يتوافق مع خطوط الإنتاج الحالية بسلاسة" },
-    { icon: "📊", title: "تحليلات شاملة", desc: "لوحات تحكم وتقارير تفصيلية للجودة" },
-  ],
-  en: [
-    { icon: "🤖", title: "AI Powered", desc: "Advanced algorithms ensuring unmatched accuracy" },
-    { icon: "⚡", title: "Real-Time", desc: "Instant detection and processing in milliseconds" },
-    { icon: "🔗", title: "Easy Integration", desc: "Seamlessly integrates with existing production lines" },
-    { icon: "📊", title: "Full Analytics", desc: "Detailed dashboards and quality reports" },
-  ],
-};
-
 export default function About({ content, locale }: AboutProps) {
   const isAr = locale === "ar";
-  const feats = isAr ? features.ar : features.en;
 
   return (
-    <section
-      id="about"
-      className="relative py-20 lg:py-32 bg-dark-900 overflow-hidden"
-    >
-      {/* Background accent */}
-      <div className="absolute inset-0 bg-gradient-to-b from-dark-900 via-dark-800/30 to-dark-900 pointer-events-none" />
+    <section id="about" className="bg-[#F2F2F2] px-4 py-14 sm:px-6 lg:px-8 lg:py-20">
+      <div className="mx-auto max-w-7xl">
+        <div className="relative min-h-[56vh] overflow-hidden rounded-2xl border border-[#2a3a4f] md:min-h-[60vh]">
+          <Image
+            src="/wp-content/uploads/2026/05/WhatsApp-Image-2025-12-11-at-16.28.36_eb002295-scaled.jpg"
+            alt={isAr ? "من نحن" : "About us background"}
+            fill
+            className="object-cover"
+            sizes="100vw"
+          />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <div className="absolute inset-0 bg-gradient-to-b from-[#000000]/72 via-[#152D49]/70 to-[#000000]/76" />
+          <div className="absolute inset-y-0 left-0 w-[18%] bg-gradient-to-r from-[#000000]/72 to-transparent blur-xl" />
+          <div className="absolute inset-y-0 right-0 w-[18%] bg-gradient-to-l from-[#000000]/72 to-transparent blur-xl" />
+          <div className="absolute inset-0 bg-[repeating-linear-gradient(90deg,rgba(103,187,189,0.1)_0_1px,transparent_1px_24px)] opacity-35" />
 
-          {/* Text column */}
-          <div className={`${isAr ? "lg:order-1" : "lg:order-1"}`}>
-            {/* Section label */}
-            <div className="flex items-center gap-3 mb-4">
-              <div className="section-divider" />
-              <span className="text-xs font-semibold uppercase tracking-widest text-brand-400">
+          <div className={`relative z-10 flex min-h-[56vh] items-center justify-center p-6 text-center md:min-h-[60vh] md:p-10 ${isAr ? "font-ar" : "font-en"}`}>
+            <div className="max-w-3xl">
+              <div className="absolute left-1/2 top-1/2 -z-10 h-[72%] w-[92%] -translate-x-1/2 -translate-y-1/2 rounded-[28px] bg-[#152D49]/38 blur-xl" />
+              <div className="absolute left-1/2 top-1/2 -z-10 h-[70%] w-[90%] -translate-x-1/2 -translate-y-1/2 rounded-[28px] border border-[#67BBBD]/20 bg-[#67BBBD]/8 backdrop-blur-[2px]" />
+              <div className="mb-4 inline-flex items-center rounded-full border border-[#67BBBD]/45 bg-[#152D49]/35 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-[#67BBBD]">
                 {isAr ? "من نحن" : "About Us"}
-              </span>
-            </div>
-
-            <h2
-              className={`font-bold text-white mb-6 ${
-                isAr ? "text-3xl sm:text-4xl" : "text-3xl sm:text-4xl font-en"
-              }`}
-            >
-              {content.aboutTitle}
-            </h2>
-
-            <p className={`text-slate-400 leading-relaxed mb-8 ${isAr ? "text-base" : "text-lg"}`}>
-              {content.aboutBody}
-            </p>
-
-            {/* Feature grid */}
-            <div className="grid sm:grid-cols-2 gap-4">
-              {feats.map((feat) => (
-                <div
-                  key={feat.title}
-                  className="glass rounded-xl p-4 card-hover border border-slate-700/50"
-                >
-                  <div className="text-2xl mb-2">{feat.icon}</div>
-                  <h3 className="font-semibold text-white text-sm mb-1">{feat.title}</h3>
-                  <p className="text-xs text-slate-500">{feat.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Visual column — animated stat cards */}
-          <div className={`${isAr ? "lg:order-2" : "lg:order-2"} flex flex-col gap-4`}>
-            <div className="glass rounded-2xl p-6 border border-brand-500/15">
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-xs font-semibold uppercase tracking-widest text-slate-500">
-                  {isAr ? "دقة الكشف" : "Detection Accuracy"}
-                </span>
-                <span className="text-xs text-brand-400 font-bold">Live</span>
               </div>
-              <div className="text-5xl font-bold gradient-text mb-2">99.9%</div>
-              {/* Bar */}
-              <div className="w-full h-2 bg-dark-600 rounded-full overflow-hidden">
-                <div
-                  className="h-full rounded-full bg-gradient-to-r from-brand-500 to-accent"
-                  style={{ width: "99.9%" }}
-                />
-              </div>
-            </div>
-
-            <div className="grid grid-cols-2 gap-4">
-              {[
-                { label: isAr ? "صناعات تخدمها" : "Industries Served", value: "6+", icon: "🏭" },
-                { label: isAr ? "حلول متكاملة" : "Integrated Solutions", value: "4+", icon: "🔧" },
-                { label: isAr ? "وقت الكشف" : "Detection Speed", value: "<1ms", icon: "⚡" },
-                { label: isAr ? "دعم مستمر" : "Continuous Support", value: "24/7", icon: "🛡️" },
-              ].map((item) => (
-                <div
-                  key={item.label}
-                  className="glass rounded-xl p-4 border border-slate-700/40 card-hover"
-                >
-                  <div className="text-xl mb-2">{item.icon}</div>
-                  <div className="text-2xl font-bold text-white">{item.value}</div>
-                  <div className="text-xs text-slate-500 mt-0.5">{item.label}</div>
-                </div>
-              ))}
+              <h2 className={`mb-5 font-bold leading-tight text-white ${isAr ? "font-ar text-4xl sm:text-5xl" : "text-3xl sm:text-4xl lg:text-5xl"}`}>
+                {content.aboutTitle}
+              </h2>
+              <p className={`mx-auto text-white/90 ${isAr ? "font-ar text-lg sm:text-xl leading-9 sm:leading-10" : "text-base leading-7 sm:text-lg"}`}>
+                {content.aboutBody}
+              </p>
             </div>
           </div>
         </div>

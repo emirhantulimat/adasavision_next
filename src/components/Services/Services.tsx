@@ -13,7 +13,7 @@ export default function Services({ content, locale }: ServicesProps) {
   return (
     <section
       id="services"
-      className="relative py-20 lg:py-32 bg-dark-800 overflow-hidden"
+      className="relative py-20 lg:py-32 bg-[#FFFFFF] overflow-hidden"
     >
       {/* Subtle top border */}
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-500/25 to-transparent" />
@@ -39,13 +39,13 @@ export default function Services({ content, locale }: ServicesProps) {
           </div>
 
           <h2
-            className={`font-bold text-white mb-4 ${
+            className={`font-bold text-[#152D49] mb-4 ${
               isAr ? "text-3xl sm:text-4xl" : "text-3xl sm:text-4xl font-en"
             }`}
           >
             {content.servicesTitle}
           </h2>
-          <p className={`max-w-2xl text-slate-400 ${isAr ? "text-base ms-auto" : "text-lg"}`}>
+          <p className={`max-w-2xl text-[#152D49]/80 ${isAr ? "text-base text-right me-auto" : "text-lg"}`}>
             {content.servicesSubtitle}
           </p>
         </div>
@@ -55,11 +55,11 @@ export default function Services({ content, locale }: ServicesProps) {
           {content.services.map((service, idx) => (
             <article
               key={service.title}
-              className="group relative glass rounded-2xl overflow-hidden border border-slate-700/50
+              className="group relative glass rounded-2xl overflow-hidden border border-[#d9e2e8]
                          card-hover flex flex-col"
             >
               {/* Image */}
-              <div className="relative h-44 overflow-hidden bg-dark-700 shrink-0">
+              <div className="relative h-44 overflow-hidden bg-[#F2F2F2] shrink-0">
                 <Image
                   src={service.image}
                   alt={service.title}
@@ -67,7 +67,7 @@ export default function Services({ content, locale }: ServicesProps) {
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-dark-900/80 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#152D49]/20 via-transparent to-transparent" />
 
                 {/* Number badge */}
                 <div className="absolute top-3 left-3 w-7 h-7 rounded-full
@@ -81,10 +81,10 @@ export default function Services({ content, locale }: ServicesProps) {
 
               {/* Content */}
               <div className={`p-5 flex-1 flex flex-col ${isAr ? "text-right" : "text-left"}`}>
-                <h3 className={`font-semibold text-white mb-2 ${isAr ? "text-base" : "text-sm font-en"}`}>
+                <h3 className={`font-semibold text-[#152D49] mb-2 ${isAr ? "text-base" : "text-sm font-en"}`}>
                   {service.title}
                 </h3>
-                <p className="text-xs text-slate-500 leading-relaxed flex-1">
+                <p className="text-xs text-[#152D49]/70 leading-relaxed flex-1">
                   {service.description}
                 </p>
 

@@ -35,7 +35,7 @@ export default function Contact({ content, locale }: ContactProps) {
   return (
     <section
       id="contact"
-      className="relative py-20 lg:py-32 bg-dark-900 overflow-hidden"
+      className="relative py-20 lg:py-32 bg-[#F2F2F2] overflow-hidden"
     >
       {/* Radial glow */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-brand-950/10 to-transparent pointer-events-none" />
@@ -52,13 +52,13 @@ export default function Contact({ content, locale }: ContactProps) {
           </div>
 
           <h2
-            className={`font-bold text-white mb-4 ${
+            className={`font-bold text-[#152D49] mb-4 ${
               isAr ? "text-3xl sm:text-4xl" : "text-3xl sm:text-4xl font-en"
             }`}
           >
             {content.ctaTitle}
           </h2>
-          <p className={`text-slate-400 max-w-2xl ${isAr ? "ms-auto text-base" : "mx-auto text-lg"}`}>
+          <p className={`text-[#152D49]/80 max-w-2xl ${isAr ? "me-auto text-right text-base" : "mx-auto text-lg"}`}>
             {content.ctaSubtitle}
           </p>
         </div>
@@ -71,24 +71,24 @@ export default function Contact({ content, locale }: ContactProps) {
             {content.contactItems.map((item) => (
               <div
                 key={item.label}
-                className={`glass rounded-2xl p-6 border border-slate-700/40 card-hover
+                className={`glass rounded-2xl p-6 border border-[#d9e2e8] card-hover
                             flex items-center gap-5 ${isAr ? "flex-row-reverse text-right" : ""}`}
               >
                 <div className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0
                                bg-brand-500/10 border border-brand-500/20 text-brand-400">
                   {icons[item.icon]}
                 </div>
-                <div>
-                  <p className="text-xs text-slate-500 mb-1">{item.label}</p>
+                <div className={isAr ? "flex-1 min-w-0 text-right" : "flex-1 min-w-0"}>
+                  <p className="text-xs text-[#152D49]/65 mb-1">{item.label}</p>
                   {item.href ? (
                     <a
                       href={item.href}
-                      className="font-semibold text-white hover:text-brand-400 transition-colors"
+                      className="font-semibold text-[#152D49] hover:text-[#67BBBD] transition-colors"
                     >
                       {item.value}
                     </a>
                   ) : (
-                    <p className="font-semibold text-white">{item.value}</p>
+                    <p className="font-semibold text-[#152D49]">{item.value}</p>
                   )}
                 </div>
               </div>
@@ -97,26 +97,23 @@ export default function Contact({ content, locale }: ContactProps) {
 
           {/* Quick message form */}
           <div className={`${isAr ? "lg:order-1" : "lg:order-2"}`}>
-            <div className="glass rounded-2xl p-8 border border-brand-500/15">
-              <h3 className={`font-bold text-white mb-6 ${isAr ? "text-lg text-right" : "text-lg font-en"}`}>
+            <div className="glass rounded-2xl p-8 border border-[#d9e2e8]">
+              <h3 className={`font-bold text-[#152D49] mb-6 ${isAr ? "text-lg text-right" : "text-lg font-en"}`}>
                 {isAr ? "أرسل رسالة سريعة" : "Send a Quick Message"}
               </h3>
 
               {/* NOTE: This is a static contact form for display purposes.
                   Wire it up to your preferred form backend (Formspree, EmailJS, etc.) */}
-              <form
-                className="space-y-4"
-                onSubmit={(e) => e.preventDefault()}
-              >
+              <form className="space-y-4">
                 <div>
-                  <label className={`block text-xs text-slate-500 mb-1.5 ${isAr ? "text-right" : ""}`}>
+                  <label className={`block text-xs text-[#152D49]/65 mb-1.5 ${isAr ? "text-right" : ""}`}>
                     {isAr ? "الاسم" : "Name"}
                   </label>
                   <input
                     type="text"
                     placeholder={isAr ? "اسمك الكريم" : "Your name"}
-                    className={`w-full px-4 py-3 rounded-lg bg-dark-700 border border-slate-600
-                               text-white placeholder-slate-600 text-sm
+                    className={`w-full px-4 py-3 rounded-lg bg-white border border-[#d9e2e8]
+                               text-[#152D49] placeholder-[#152D49]/40 text-sm
                                focus:outline-none focus:border-brand-500/60 focus:ring-1 focus:ring-brand-500/30
                                transition-colors ${isAr ? "text-right" : ""}`}
                     dir={isAr ? "rtl" : "ltr"}
@@ -124,14 +121,14 @@ export default function Contact({ content, locale }: ContactProps) {
                 </div>
 
                 <div>
-                  <label className={`block text-xs text-slate-500 mb-1.5 ${isAr ? "text-right" : ""}`}>
+                  <label className={`block text-xs text-[#152D49]/65 mb-1.5 ${isAr ? "text-right" : ""}`}>
                     {isAr ? "البريد الإلكتروني" : "Email"}
                   </label>
                   <input
                     type="email"
                     placeholder={isAr ? "بريدك الإلكتروني" : "your@email.com"}
-                    className={`w-full px-4 py-3 rounded-lg bg-dark-700 border border-slate-600
-                               text-white placeholder-slate-600 text-sm
+                    className={`w-full px-4 py-3 rounded-lg bg-white border border-[#d9e2e8]
+                               text-[#152D49] placeholder-[#152D49]/40 text-sm
                                focus:outline-none focus:border-brand-500/60 focus:ring-1 focus:ring-brand-500/30
                                transition-colors`}
                     dir="ltr"
@@ -139,14 +136,14 @@ export default function Contact({ content, locale }: ContactProps) {
                 </div>
 
                 <div>
-                  <label className={`block text-xs text-slate-500 mb-1.5 ${isAr ? "text-right" : ""}`}>
+                  <label className={`block text-xs text-[#152D49]/65 mb-1.5 ${isAr ? "text-right" : ""}`}>
                     {isAr ? "رسالتك" : "Message"}
                   </label>
                   <textarea
                     rows={4}
                     placeholder={isAr ? "كيف يمكننا مساعدتك؟" : "How can we help you?"}
-                    className={`w-full px-4 py-3 rounded-lg bg-dark-700 border border-slate-600
-                               text-white placeholder-slate-600 text-sm resize-none
+                    className={`w-full px-4 py-3 rounded-lg bg-white border border-[#d9e2e8]
+                               text-[#152D49] placeholder-[#152D49]/40 text-sm resize-none
                                focus:outline-none focus:border-brand-500/60 focus:ring-1 focus:ring-brand-500/30
                                transition-colors ${isAr ? "text-right" : ""}`}
                     dir={isAr ? "rtl" : "ltr"}

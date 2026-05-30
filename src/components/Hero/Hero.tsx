@@ -1,154 +1,199 @@
-// src/components/Hero/Hero.tsx
-import type { PageContent, Locale } from "@/types";
 import Image from "next/image";
+import type { PageContent, Locale } from "@/types";
 
 interface HeroProps {
   content: PageContent;
   locale: Locale;
 }
 
+type StatItem = { value: string; label: string };
+
 export default function Hero({ content, locale }: HeroProps) {
   const isAr = locale === "ar";
 
+  const stats: StatItem[] = isAr
+    ? [
+        { value: "دقة الكشف تصل إلى 99.9%", label: "" },
+        { value: "المراقبة مستمرة على مدار 24/7", label: "" },
+        { value: "زمن الاستجابة أقل من 20 ms", label: "" },
+      ]
+    : [
+        { value: "99.9%", label: "Detection Accuracy" },
+        { value: "24/7", label: "Continuous Monitoring" },
+        { value: "<1ms", label: "Response Time" },
+      ];
+
   return (
     <section
-      className="relative min-h-screen flex items-center hero-bg overflow-hidden pt-16"
+      className="relative mt-16 overflow-hidden bg-[#F2F2F2] lg:mt-20"
       aria-label={isAr ? "القسم الرئيسي" : "Hero section"}
     >
-      {/* Grid overlay */}
-      <div
-        className="absolute inset-0 opacity-30"
-        style={{
-          backgroundImage: "radial-gradient(circle at 1px 1px, rgba(0,174,219,0.15) 1px, transparent 0)",
-          backgroundSize: "40px 40px",
-        }}
-      />
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute inset-0 hidden md:block">
+          <Image
+            src="/wp-content/uploads/2026/05/5u.png"
+            alt="Hero background desktop"
+            fill
+            priority
+            className="object-cover"
+            style={{ objectPosition: "center 65%" }}
+            sizes="100vw"
+          />
+        </div>
+        <div className="absolute inset-x-0 top-0 h-[74%] md:hidden">
+          <Image
+            src="/wp-content/uploads/2026/05/a29ebc12-16cf-4c5b-bc92-d45af97e6843.jpg"
+            alt="Hero background mobile"
+            fill
+            priority
+            className="object-cover"
+            style={{ objectPosition: "center 5%" }}
+            sizes="100vw"
+          />
+        </div>
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(21,45,73,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(21,45,73,0.04)_1px,transparent_1px)] bg-[size:28px_28px] opacity-30" />
+      </div>
 
-      {/* Top glow */}
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-500/60 to-transparent" />
+      <div className="relative z-10 flex min-h-[calc(100vh+6rem)] flex-col md:min-h-[calc(100vh-5rem)]">
+        {/* DÜZENLEME: Mobilde üstte (justify-start), büyük ekranda aşağıda (md:justify-end) durması için flex hizalaması değiştirildi. pt-6 ile mobilde daha yukarı çekildi. */}
+        <div className="mx-auto flex w-full max-w-[1400px] flex-1 flex-col justify-start md:justify-end px-4 pb-12 pt-6 sm:px-8 md:pt-12 md:pb-[15vh] lg:px-12 lg:pb-[20vh] xl:pb-[22vh]">
+          <div
+            className={`relative w-full md:w-[60%] lg:w-[45%] max-w-[700px] ${
+              isAr ? "ms-auto text-right font-ar" : "me-auto text-left"
+            }`}
+          >
+            <div className="pointer-events-none absolute inset-[-3rem] hidden -z-10 rounded-[36px] md:block">
+              <div className="absolute inset-0 rounded-[36px] bg-[radial-gradient(ellipse_at_center,rgba(103,187,189,0.32)_0%,rgba(103,187,189,0.18)_45%,rgba(103,187,189,0)_78%)] blur-xl" />
+              <div className="absolute inset-0 rounded-[36px] bg-[repeating-linear-gradient(90deg,rgba(21,45,73,0.08)_0_1px,transparent_1px_18px)] opacity-35" />
+            </div>
 
-      {/* Orb glow */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] rounded-full bg-brand-500/5 blur-3xl pointer-events-none" />
-
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32 w-full">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-
-          {/* Left / Text column */}
-          <div className={`${isAr ? "lg:order-2" : "lg:order-1"}`}>
-
-            {/* Tag chip */}
-            <div className="inline-flex items-center gap-2 mb-6 px-3 py-1.5
-                            bg-brand-500/10 border border-brand-500/25 rounded-full
-                            text-xs font-semibold text-brand-400 uppercase tracking-widest
-                            animate-fade-in">
-              <span className="w-1.5 h-1.5 rounded-full bg-brand-400 animate-pulse" />
+            <div className="inline-flex items-center rounded-full border border-[#67BBBD]/50 bg-white/85 px-2.5 py-1 sm:px-3 sm:py-1.5 text-[10px] sm:text-xs font-semibold uppercase tracking-widest text-[#152D49]">
               {isAr ? "رؤية صناعية ذكية" : "Industrial AI Vision"}
             </div>
 
-            {/* Main heading */}
             <h1
-              className={`font-bold leading-tight mb-6 animate-fade-up opacity-0 delay-100
-                          ${isAr
-                            ? "text-3xl sm:text-4xl lg:text-5xl xl:text-6xl"
-                            : "text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-en"
-                          }`}
+              className={`mt-4 sm:mt-5 font-bold text-[#152D49] ${
+                isAr
+                  ? "text-3xl leading-[1.3] sm:text-4xl sm:leading-[1.2] md:text-5xl lg:text-6xl"
+                  : "font-en text-3xl leading-[1.1] sm:text-4xl md:text-5xl lg:text-[3.5rem]"
+              }`}
             >
-              <span className="text-white">{content.heroTitle.split(" ").slice(0, isAr ? 2 : 2).join(" ")} </span>
-              <span className="gradient-text">{content.heroTitle.split(" ").slice(isAr ? 2 : 2).join(" ")}</span>
+              {content.heroTitle}
             </h1>
 
-            {/* Subtitle */}
             <p
-              className={`text-slate-400 max-w-lg mb-8 leading-relaxed animate-fade-up opacity-0 delay-200
-                          ${isAr ? "text-lg" : "text-xl"}`}
+              className={`mt-3 sm:mt-5 text-[#152D49]/80 ${
+                isAr
+                  ? "ms-auto text-base leading-relaxed sm:text-lg sm:leading-9 md:text-xl md:leading-10"
+                  : "text-base sm:text-lg md:text-xl"
+              }`}
             >
               {content.heroSubtitle}
             </p>
 
-            {/* CTAs */}
-            <div className={`flex flex-wrap gap-4 animate-fade-up opacity-0 delay-300 ${isAr ? "justify-start" : "justify-start"}`}>
-              <a href="#contact" className="btn-primary">
-                {isAr ? "تواصل معنا" : "Get In Touch"}
-                <svg className={`w-4 h-4 ${isAr ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </a>
-              <a
-                href="#services"
-                className="inline-flex items-center gap-2 px-8 py-3.5 text-sm font-semibold
-                           rounded-lg border border-slate-600 text-slate-300
-                           hover:border-brand-500/50 hover:text-brand-400
-                           transition-all duration-200"
+            <div className="mt-8 hidden md:block">
+              <div
+                className={`flex flex-wrap gap-3 ${isAr ? "justify-end" : "justify-start"}`}
               >
-                {isAr ? "خدماتنا" : "Our Services"}
-              </a>
-            </div>
-
-            {/* Stats row */}
-            <div className="mt-12 grid grid-cols-3 gap-6 animate-fade-up opacity-0 delay-400">
-              {(isAr
-                ? [{ num: "99.9%", label: "دقة الكشف" }, { num: "24/7", label: "مراقبة مستمرة" }, { num: "ms", label: "وقت الاستجابة" }]
-                : [{ num: "99.9%", label: "Detection Accuracy" }, { num: "24/7", label: "Continuous Monitoring" }, { num: "<1ms", label: "Response Time" }]
-              ).map((stat) => (
-                <div key={stat.label} className={`${isAr ? "text-right" : "text-left"}`}>
-                  <div className="text-2xl font-bold gradient-text">{stat.num}</div>
-                  <div className="text-xs text-slate-500 mt-0.5">{stat.label}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Right / Visual column */}
-          <div className={`${isAr ? "lg:order-1" : "lg:order-2"} flex justify-center`}>
-            <div className="relative w-full max-w-md lg:max-w-lg">
-              {/* Outer glow ring */}
-              <div className="absolute -inset-6 rounded-3xl bg-brand-500/5 blur-2xl animate-glow" />
-
-              {/* Image frame */}
-              <div className="relative glass rounded-2xl p-2 overflow-hidden">
-                {/* Scan line effect */}
-                <div
-                  className="absolute inset-x-0 h-0.5 bg-gradient-to-r from-transparent via-brand-400/80 to-transparent animate-scan z-10 pointer-events-none"
-                />
-
-                <div className="relative rounded-xl overflow-hidden aspect-[4/3] bg-dark-700">
-                  <Image
-                    src="https://adasavision.com/wp-content/uploads/2026/04/Gemini_Generated_Image_5w3hf85w3hf85w3h.png"
-                    alt={isAr ? "نظام رؤية صناعية" : "Industrial vision system"}
-                    fill
-                    className="object-cover"
-                    priority
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
-                  {/* Overlay tint */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-dark-900/60 via-transparent to-transparent" />
-                </div>
-
-                {/* Corner accent lines */}
-                <div className="absolute top-2 left-2 w-5 h-5 border-t-2 border-l-2 border-brand-400/70 rounded-tl-sm" />
-                <div className="absolute top-2 right-2 w-5 h-5 border-t-2 border-r-2 border-brand-400/70 rounded-tr-sm" />
-                <div className="absolute bottom-2 left-2 w-5 h-5 border-b-2 border-l-2 border-brand-400/70 rounded-bl-sm" />
-                <div className="absolute bottom-2 right-2 w-5 h-5 border-b-2 border-r-2 border-brand-400/70 rounded-br-sm" />
+                <a href="#contact" className="btn-primary">
+                  {isAr ? "تواصل معنا" : "Get In Touch"}
+                </a>
+                <a
+                  href="#services"
+                  className="inline-flex items-center rounded-lg border border-[#cfd7df] bg-white/90 px-6 py-3 text-sm font-semibold text-[#152D49] transition-colors hover:border-[#67BBBD]"
+                >
+                  {isAr ? "خدماتنا" : "Our Services"}
+                </a>
               </div>
 
-              {/* Floating badge */}
-              <div className={`absolute -bottom-4 ${isAr ? "-left-4" : "-right-4"}
-                               glass rounded-xl px-4 py-3 border border-brand-500/20`}>
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-                  <span className="text-xs font-semibold text-brand-300">
-                    {isAr ? "الذكاء الاصطناعي نشط" : "AI Active"}
-                  </span>
-                </div>
-                <div className="text-xl font-bold text-white mt-0.5">99.9%</div>
+              <div className="mt-6 grid grid-cols-3 gap-3 sm:gap-4">
+                {stats.map((stat, index) => (
+                  <div
+                    key={`${stat.value}-${index}`}
+                    className="rounded-lg border border-[#d9e2e8] bg-white/85 px-3 py-3 sm:px-4"
+                  >
+                    {isAr ? (
+                      <div className="text-sm font-semibold leading-7 text-[#152D49]">
+                        {stat.value}
+                      </div>
+                    ) : (
+                      <>
+                        <bdi
+                          className="text-xl font-bold text-[#152D49]"
+                          dir="ltr"
+                        >
+                          {stat.value}
+                        </bdi>
+                        <div className="text-xs text-[#152D49]/70">
+                          {stat.label}
+                        </div>
+                      </>
+                    )}
+                  </div>
+                ))}
               </div>
             </div>
           </div>
         </div>
-      </div>
+        <div className="w-full px-4 pb-6 sm:px-6 md:hidden">
+          <div className="mx-auto max-w-7xl rounded-2xl border border-[#d9e2e8] bg-white/95 p-4 shadow-[0_14px_40px_rgba(21,45,73,0.12)] backdrop-blur">
+            <div className="mb-4 flex items-center justify-between">
+              {/* Arapça ise font-ar sınıfı eklendi */}
+              <div
+                className={`text-[10px] font-bold uppercase tracking-[0.2em] text-[#152D49]/50 ${isAr ? "font-ar" : ""}`}
+              >
+                {isAr ? "بدء سريع" : "Quick Start"}
+              </div>
+              <div className="h-px w-16 bg-gradient-to-r from-[#67BBBD]/60 to-transparent" />
+            </div>
 
-      {/* Bottom fade */}
-      <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-dark-900 to-transparent" />
+            {/* Butonlar: Fontu zorlamak için !font-ar ve !font-bold eklendi */}
+            <div className="flex gap-3">
+              <a
+                href="#contact"
+                className={`btn-primary flex-[2] justify-center py-3 text-sm font-bold text-center shadow-sm ${isAr ? "!font-ar" : ""}`}
+              >
+                {isAr ? "تواصل معنا" : "Get In Touch"}
+              </a>
+              <a
+                href="#services"
+                className={`flex flex-[1] items-center justify-center rounded-lg border border-[#cfd7df] bg-white py-3 text-sm font-bold text-[#152D49] transition-all hover:border-[#67BBBD] hover:bg-[#F8FBFB] text-center ${isAr ? "!font-ar" : ""}`}
+              >
+                {isAr ? "خدماتنا" : "Services"}
+              </a>
+            </div>
+
+            {/* İstatistikler */}
+            <div className="mt-5 grid grid-cols-3 gap-2">
+              {stats.map((stat, index) => (
+                <div
+                  key={`${stat.value}-${index}`}
+                  className="flex flex-col items-center justify-center rounded-xl border border-[#eef2f5] bg-[#F8FBFB] p-2.5"
+                >
+                  {isAr ? (
+                    // Arapça için fontu ve kalınlığı zorla
+                    <div className="font-ar !font-black text-[14px] leading-tight text-[#152D49]">
+                      {stat.value}
+                    </div>
+                  ) : (
+                    <>
+                      <bdi
+                        className="block text-[15px] !font-black leading-none text-[#152D49]"
+                        dir="ltr"
+                      >
+                        {stat.value}
+                      </bdi>
+                      <div className="mt-1.5 text-[9px] font-bold uppercase tracking-wide text-[#152D49]/60">
+                        {stat.label}
+                      </div>
+                    </>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   );
 }

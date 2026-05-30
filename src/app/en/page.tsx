@@ -31,7 +31,7 @@ export default async function EnglishHomePage() {
   const content = await getPageContent("en");
 
   return (
-    <html lang="en" dir="ltr">
+    <html lang="en" dir="rtl">
       <body className="font-en">
         <Header locale="en" />
         <main id="main">
