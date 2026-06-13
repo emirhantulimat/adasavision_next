@@ -21,10 +21,9 @@ export default function Pipeline({ content, locale }: PipelineProps) {
       <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-brand-500/25 to-transparent" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
         {/* Section header */}
-        <div className={`mb-16 ${isAr ? "text-right" : "text-center"}`}>
-          <div className={`flex items-center gap-3 mb-4 ${isAr ? "justify-end flex-row-reverse" : "justify-center"}`}>
+        <div className={`mb-16 ${isAr ? "text-right" : "text-left"}`}>
+          <div className={`flex items-center gap-3 mb-4 ${isAr ? "" : ""}`}>
             <div className="section-divider" />
             <span className="text-xs font-semibold uppercase tracking-widest text-brand-400">
               {isAr ? "كيف يعمل النظام" : "How It Works"}
@@ -38,7 +37,9 @@ export default function Pipeline({ content, locale }: PipelineProps) {
           >
             {content.pipelineTitle}
           </h2>
-          <p className={`text-[#152D49]/80 max-w-2xl ${isAr ? "me-auto text-right text-base" : "mx-auto text-lg"}`}>
+          <p
+            className={`text-[#152D49]/80 max-w-2xl ${isAr ? "me-auto text-right text-base" : " text-lg"}`}
+          >
             {content.pipelineSubtitle}
           </p>
         </div>
@@ -46,14 +47,16 @@ export default function Pipeline({ content, locale }: PipelineProps) {
         {/* Pipeline steps */}
         <div className="relative">
           {/* Horizontal connector line (desktop) */}
-          <div className="hidden lg:block absolute top-12 inset-x-0 h-px
-                          bg-gradient-to-r from-transparent via-brand-500/30 to-transparent" />
+          <div
+            className="hidden lg:block absolute top-12 inset-x-0 h-px
+                          bg-gradient-to-r from-transparent via-brand-500/30 to-transparent"
+          />
 
           <div className="grid lg:grid-cols-3 gap-8 lg:gap-6">
             {content.pipelineSteps.map((step, idx) => (
               <div
                 key={step.number}
-                className={`relative flex flex-col ${isAr ? "items-end text-right" : "items-start text-left"}`}
+                className={`relative flex flex-col ${isAr ? "" : ""}`}
               >
                 {/* Step number circle */}
                 <div
@@ -64,7 +67,9 @@ export default function Pipeline({ content, locale }: PipelineProps) {
                               shadow-sm"
                 >
                   <span className="text-2xl">{stepIcons[idx]}</span>
-                  <span className="text-xs font-bold text-brand-400">{step.number}</span>
+                  <span className="text-xs font-bold text-brand-400">
+                    {step.number}
+                  </span>
                 </div>
 
                 {/* Content card */}
@@ -95,7 +100,9 @@ export default function Pipeline({ content, locale }: PipelineProps) {
         <div className="mt-16 glass rounded-2xl p-8 border border-[#d9e2e8] text-center bg-[#F2F2F2]">
           <div className="text-6xl font-bold gradient-text mb-2">99.9%</div>
           <p className="text-[#152D49] font-medium">
-            {isAr ? "دقة الكشف عن العيوب — مضمونة" : "Defect Detection Accuracy — Guaranteed"}
+            {isAr
+              ? "دقة الكشف عن العيوب — مضمونة"
+              : "Defect Detection Accuracy — Guaranteed"}
           </p>
         </div>
       </div>

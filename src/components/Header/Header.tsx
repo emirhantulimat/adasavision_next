@@ -11,8 +11,8 @@ interface HeaderProps {
 }
 
 export default function Header({ locale }: HeaderProps) {
-  const [scrolled, setScrolled]     = useState(false);
-  const [menuOpen, setMenuOpen]     = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const isAr = locale === "ar";
 
   useEffect(() => {
@@ -22,21 +22,21 @@ export default function Header({ locale }: HeaderProps) {
   }, []);
 
   const otherLocale = isAr ? "en" : "ar";
-  const otherHref   = isAr ? "/en" : "/";
-  const otherLabel  = isAr ? "English 🇺🇸" : "العربية 🇸🇦";
+  const otherHref = isAr ? "/en" : "/";
+  const otherLabel = isAr ? "English 🇺🇸" : "العربية 🇸🇦";
 
   const navLinks = isAr
     ? [
-        { label: "من نحن",     href: "#about" },
-        { label: "خدماتنا",    href: "#services" },
-        { label: "القطاعات",   href: "#industries" },
+        { label: "من نحن", href: "#about" },
+        { label: "خدماتنا", href: "#services" },
+        { label: "القطاعات", href: "#industries" },
         { label: "تواصل معنا", href: "#contact" },
       ]
     : [
-        { label: "About",     href: "#about" },
-        { label: "Services",  href: "#services" },
-        { label: "Industries",href: "#industries" },
-        { label: "Contact",   href: "#contact" },
+        { label: "About", href: "#about" },
+        { label: "Services", href: "#services" },
+        { label: "Industries", href: "#industries" },
+        { label: "Contact", href: "#contact" },
       ];
 
   return (
@@ -48,47 +48,50 @@ export default function Header({ locale }: HeaderProps) {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 lg:h-20">
+        {/* lg ekranlarda 3 eşit sütunlu grid yapısına geçerek menüyü tam ortalıyoruz */}
+        <div className="flex lg:grid lg:grid-cols-3 items-center justify-between h-16 lg:h-20">
+          {/* 1. Sütun: Logo (Sola yaslı) */}
+          <div className="flex items-center justify-start">
+            <Link
+              href={isAr ? "/" : "/en"}
+              className="flex items-center shrink-0"
+            >
+              {/* h-[80px] olan logoyu header'a sığması için h-[60px] veya h-[64px] yapmak dikey hizalamayı kusursuzlaştırır */}
+              <div className="relative w-[180px] lg:w-[210px] h-[55px] lg:h-[60px] ms-4 lg:ms-0">
+                <Image
+                  src="/wp-content/uploads/2026/05/logotemp.png"
+                  alt="Adasa Vision"
+                  fill
+                  className="object-contain object-left" /* Arapça ltr/rtl durumuna göre dilerseniz object-start kalabilir */
+                  priority
+                  unoptimized={false}
+                />
+              </div>
+            </Link>
+          </div>
 
-          {/* Logo */}
-          <Link
-            href={isAr ? "/" : "/en"}
-            className="flex items-center gap-3 shrink-0"
-          >
-            <div className="relative w-[140px] h-[40px]">
-              <Image
-                src="/wp-content/uploads/2026/05/logotemp.png"
-                alt="Adasa Vision"
-                fill
-                className="object-contain object-start"
-                priority
-                unoptimized={false}
-              />
-            </div>
-          </Link>
-
-          {/* Desktop nav */}
-          <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
+          {/* 2. Sütun: Desktop nav (Yatayda tam ortalanmış) */}
+          <nav className="hidden lg:flex items-center justify-center gap-6 xl:gap-8">
             {navLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
-                className="text-sm font-medium text-[#152D49] hover:text-[#67BBBD] transition-colors duration-200"
+                className="text-md font-medium text-[#152D49] hover:text-[#67BBBD] transition-colors duration-200 whitespace-nowrap"
               >
                 {link.label}
               </a>
             ))}
           </nav>
 
-          {/* Language switcher + mobile hamburger */}
-          <div className="flex items-center gap-3">
+          {/* 3. Sütun: Language switcher + mobile hamburger (Sağa yaslı) */}
+          <div className="flex items-center justify-end gap-3">
             {/* Language button */}
             <Link
               href={otherHref}
               className="hidden sm:inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold
-                         rounded-full border border-[#67BBBD] text-[#152D49]
-                         hover:bg-[#67BBBD]/15
-                         transition-all duration-200"
+                     rounded-full border border-[#67BBBD] text-[#152D49]
+                     hover:bg-[#67BBBD]/15
+                     transition-all duration-200 whitespace-nowrap"
             >
               {otherLabel}
             </Link>
@@ -98,7 +101,7 @@ export default function Header({ locale }: HeaderProps) {
               aria-label={menuOpen ? "Close menu" : "Open menu"}
               onClick={() => setMenuOpen(!menuOpen)}
               className="lg:hidden p-2 rounded-md text-[#152D49] hover:text-[#152D49]
-                         hover:bg-[#67BBBD]/15 transition"
+                     hover:bg-[#67BBBD]/15 transition"
             >
               <span className="sr-only">Toggle menu</span>
               <div className="w-5 flex flex-col gap-1">
@@ -123,7 +126,7 @@ export default function Header({ locale }: HeaderProps) {
         </div>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile menu (Değişmedi) */}
       <div
         className={`lg:hidden overflow-hidden transition-all duration-300 ${
           menuOpen ? "max-h-96" : "max-h-0"
@@ -137,8 +140,8 @@ export default function Header({ locale }: HeaderProps) {
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
                 className="px-3 py-2.5 text-sm font-medium text-[#152D49]
-                           hover:text-[#152D49] hover:bg-[#67BBBD]/15
-                           rounded-md transition-colors"
+                       hover:text-[#152D49] hover:bg-[#67BBBD]/15
+                       rounded-md transition-colors"
               >
                 {link.label}
               </a>
@@ -148,9 +151,9 @@ export default function Header({ locale }: HeaderProps) {
           <Link
             href={otherHref}
             className="flex items-center justify-center gap-2 w-full px-4 py-2.5
-                       text-sm font-semibold rounded-full
-                       border border-[#67BBBD] text-[#152D49]
-                       hover:bg-[#67BBBD]/15 transition"
+                   text-sm font-semibold rounded-full
+                   border border-[#67BBBD] text-[#152D49]
+                   hover:bg-[#67BBBD]/15 transition"
           >
             {otherLabel}
           </Link>

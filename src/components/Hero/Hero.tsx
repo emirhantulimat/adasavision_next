@@ -92,15 +92,13 @@ export default function Hero({ content, locale }: HeroProps) {
             </p>
 
             <div className="mt-8 hidden md:block">
-              <div
-                className={`flex flex-wrap gap-3 ${isAr ? "justify-end" : "justify-start"}`}
-              >
+              <div className="flex flex-wrap gap-3 justify-start">
                 <a href="#contact" className="btn-primary">
                   {isAr ? "تواصل معنا" : "Get In Touch"}
                 </a>
                 <a
                   href="#services"
-                  className="inline-flex items-center rounded-lg border border-[#cfd7df] bg-white/90 px-6 py-3 text-sm font-semibold text-[#152D49] transition-colors hover:border-[#67BBBD]"
+                  className="inline-flex items-center rounded-lg border border-[#cfd7df] bg-white/90 px-6 py-3  font-semibold text-[#152D49] transition-colors hover:border-[#67BBBD]"
                 >
                   {isAr ? "خدماتنا" : "Our Services"}
                 </a>
